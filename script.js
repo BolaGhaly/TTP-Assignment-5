@@ -3,6 +3,11 @@ let flexbox_container = document.querySelector(".flexbox-container");
 const allColsArr = Array.from(document.querySelectorAll(".col"));
 const allRowsArr = Array.from(document.querySelectorAll(".row"));
 
+//All the boxes will be white at the start
+allColsArr.forEach((element) => {
+  element.style.backgroundColor = "white";
+});
+
 //------------------------------ Center Buttons (Rows + Columns) ----------------------
 const addRowButton = document.querySelector(".add-row");
 const removeRowButton = document.querySelector(".remove-row");
@@ -34,13 +39,8 @@ const third_form_color = document.querySelector("#third-form-color");
 const fourth_form_color = document.querySelector("#fourth-form-color");
 
 const second_form_submit = document.querySelector(".second-form-submit");
-console.log(second_form_submit);
-
 const third_form_submit = document.querySelector(".third-form-submit");
-console.log(third_form_submit);
-
 const fourth_form_submit = document.querySelector(".fourth-form-submit");
-console.log(fourth_form_submit);
 
 //Closes issue #6
 allColsArr.map((element) => {
@@ -48,3 +48,19 @@ allColsArr.map((element) => {
     element.style.backgroundColor = first_form_color.value;
   });
 });
+
+//Closes issue #7
+second_form_submit.onclick = function () {
+  allColsArr.forEach((element) => {
+    if (element.style.backgroundColor == "white") {
+      element.style.backgroundColor = second_form_color.value;
+    }
+  });
+};
+
+//Closes issue #8
+third_form_submit.onclick = function () {
+  allColsArr.forEach((element) => {
+    element.style.backgroundColor = third_form_color.value;
+  });
+};
