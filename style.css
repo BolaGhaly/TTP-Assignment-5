@@ -23,6 +23,7 @@ p {
   margin-top: 50px;
 }
 .box {
+  cursor: pointer;
   color: black;
   background-color: whitesmoke;
   border: 2px solid rgb(50, 81, 221);
@@ -54,8 +55,9 @@ p {
 }
 
 .first-form form select {
-  margin-left: 20px;
+  margin-left: 10px;
 }
+
 form select {
   padding-left: 10px;
   height: 35px;
