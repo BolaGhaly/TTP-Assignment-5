@@ -15,20 +15,20 @@
     <title>TTP-Assignment-5</title>
   </head>
   <body>
-    <div class="container mt-4">
+    <div class="container flexbox-container">
       <div class="row">
         <div
-          class="col box border border-dark d-flex justify-content-center align-items-center one"
+          class="col box d-flex justify-content-center align-items-center one"
         >
           Column
         </div>
         <div
-          class="col box border border-dark d-flex justify-content-center align-items-center two"
+          class="col box d-flex justify-content-center align-items-center two"
         >
           Column
         </div>
         <div
-          class="col box border border-dark d-flex justify-content-center align-items-center three"
+          class="col box d-flex justify-content-center align-items-center three"
         >
           Column
         </div>
@@ -36,17 +36,17 @@
 
       <div class="row">
         <div
-          class="col box border border-dark d-flex justify-content-center align-items-center four"
+          class="col box d-flex justify-content-center align-items-center four"
         >
           Column
         </div>
         <div
-          class="col box border border-dark d-flex justify-content-center align-items-center five"
+          class="col box d-flex justify-content-center align-items-center five"
         >
           Column
         </div>
         <div
-          class="col box border border-dark d-flex justify-content-center align-items-center six"
+          class="col box d-flex justify-content-center align-items-center six"
         >
           Column
         </div>
@@ -54,49 +54,110 @@
 
       <div class="row">
         <div
-          class="col box border border-dark d-flex justify-content-center align-items-center seven"
+          class="col box d-flex justify-content-center align-items-center seven"
         >
           Column
         </div>
         <div
-          class="col box border border-dark d-flex justify-content-center align-items-center eight"
+          class="col box d-flex justify-content-center align-items-center eight"
         >
           Column
         </div>
         <div
-          class="col box border border-dark d-flex justify-content-center align-items-center nine"
+          class="col box d-flex justify-content-center align-items-center nine"
         >
           Column
         </div>
       </div>
     </div>
-      <div class="container-fluid d-flex justify-content-center">
-        <button type="button" class="btn btn-success my-3">Add a row</button>
-        <button type="button" class="btn btn-danger my-3">Remove a row</button>
-        <button type="button" class="btn btn-dark my-3">Reset</button>
-        <button type="button" class="btn btn-success my-3">Add a column</button>
-        <button type="button" class="btn btn-danger my-3">
-          Remove a column
-        </button>
+    <div class="container-fluid buttons-container">
+      <button type="button" class="btn btn-success add-row">Add a row</button>
+      <button type="button" class="btn btn-danger remove-row">
+        Remove a row
+      </button>
+      <button type="button" class="btn btn-warning reset">Reset</button>
+      <button type="button" class="btn btn-success add-col">
+        Add a column
+      </button>
+      <button type="button" class="btn btn-danger remove-col">
+        Remove a column
+      </button>
     </div>
 
-    <div class="container">
-      <h6 class="py-2">
-        Select from the following list and click on a box to change the color!
-      </h6>
-      <form>
-        <label for="colors">Choose a color:</label>
-        <select name="colors" id="colors">
-          <option value="red">Red</option>
-          <option value="blue">Blue</option>
-          <option value="green">Green</option>
-          <option value="pink">Pink</option>
-          <option value="white">White</option>
-        </select>
-      </form>
+    <div class="mb-5">
+      <div class="container first-form">
+        <p>
+          Select from the following list and click on a box to change the color!
+        </p>
+        <form>
+          <label for="first-form-colors">Choose a color:</label>
+          <select name="first-form-colors">
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="pink">Pink</option>
+            <option value="white">White</option>
+          </select>
+        </form>
+      </div>
+
+      <div class="container second-form mt-5">
+        <form>
+          <label for="second-form-colors"
+            >Fill all uncolored cells with the currently selected color:</label
+          >
+          <div class="select-and-submit">
+            <select name="second-form-colors">
+              <option value="red">Red</option>
+              <option value="blue">Blue</option>
+              <option value="green">Green</option>
+              <option value="pink">Pink</option>
+              <option value="white">White</option>
+            </select>
+            <input type="button" value="Do it!" class="second-form-submit" />
+          </div>
+        </form>
+      </div>
+
+      <div class="container third-form mt-5">
+        <form>
+          <label for="third-form-colors"
+            >Fill all cells with the currently selected color:</label
+          >
+          <div class="select-and-submit">
+            <select name="third-form-colors">
+              <option value="red">Red</option>
+              <option value="blue">Blue</option>
+              <option value="green">Green</option>
+              <option value="pink">Pink</option>
+              <option value="white">White</option>
+            </select>
+            <input type="button" value="Do it!" class="third-form-submit" />
+          </div>
+        </form>
+      </div>
+
+      <div class="container fourth-form mt-5">
+        <form>
+          <label for="fourth-form-colors"
+            >Click and hold from a single cell (start) to a different cell (end)
+            and all affected/hovered-over cells from start to end change to the
+            currently selected color:
+          </label>
+          <div class="select-and-submit">
+            <select name="fourth-form-colors">
+              <option value="red">Red</option>
+              <option value="blue">Blue</option>
+              <option value="green">Green</option>
+              <option value="pink">Pink</option>
+              <option value="white">White</option>
+            </select>
+            <input type="button" value="Do it!" class="fourth-form-submit" />
+          </div>
+        </form>
+      </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
