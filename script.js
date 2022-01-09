@@ -128,7 +128,6 @@ let fourth_form_isClicked = false;
 
 fourth_form_submit.onclick = function () {
   fourth_form_isClicked = !fourth_form_isClicked;
-  console.log(fourth_form_isClicked);
 
   if (fourth_form_isClicked === true) {
     let isMouseDown;
@@ -136,24 +135,23 @@ fourth_form_submit.onclick = function () {
     allColsArr.forEach((element) => {
       element.addEventListener("mousedown", function () {
         isMouseDown = true;
-        element.style.backgroundColor = fourth_form_color.value;
+        if (fourth_form_submit.value != "Do it!") {
+          element.style.backgroundColor = fourth_form_color.value;
+        }
       });
       element.addEventListener("mouseover", function () {
-        if (isMouseDown == true) {
+        if (isMouseDown == true && fourth_form_submit.value != "Do it!") {
           element.style.backgroundColor = fourth_form_color.value;
         }
       });
       element.addEventListener("mouseup", function () {
         isMouseDown = false;
-        element.style.backgroundColor = fourth_form_color.value;
+        if (fourth_form_submit.value != "Do it!") {
+          element.style.backgroundColor = fourth_form_color.value;
+        }
       });
     });
   } else if (fourth_form_isClicked === false) {
     fourth_form_submit.value = "Do it!";
-    allColsArr.forEach((element) => {
-      element.addEventListener("click", function () {
-        element.style.backgroundColor = element.style.backgroundColor;
-      });
-    });
   }
 };
