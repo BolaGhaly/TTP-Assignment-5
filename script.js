@@ -1,9 +1,9 @@
 //--------------------------------- Flexbox Container ---------------------------------
 let flexbox_container = document.querySelector(".flexbox-container");
-const allColsArr = Array.from(document.querySelectorAll(".col"));
-const allRowsArr = Array.from(document.querySelectorAll(".row"));
+let allColsArr = Array.from(document.querySelectorAll(".col"));
+let allRowsArr = Array.from(document.querySelectorAll(".row"));
 
-//All the boxes will be white at the start
+//All the boxes will have a background color of "white" at the start
 allColsArr.forEach((element) => {
   element.style.backgroundColor = "white";
 });
@@ -12,12 +12,36 @@ allColsArr.forEach((element) => {
 const addRowButton = document.querySelector(".add-row");
 const removeRowButton = document.querySelector(".remove-row");
 const resetButton = document.querySelector(".reset");
-const addColButton = document.querySelector(".add-col");
 const removeColButton = document.querySelector(".remove-col");
+const addColButton = document.querySelector(".add-col");
+
+//Closes issue #1
+addRowButton.onclick = function () {
+  let addNewRow = document.createElement("div");
+  addNewRow.classList = "row";
+
+  for (let i = 0; i < allColsArr.length / allRowsArr.length; i++) {
+    let addNewCol = document.createElement("div");
+    addNewCol.classList =
+      "col box d-flex justify-content-center align-items-center";
+    addNewCol.innerHTML = "Column";
+    addNewCol.style.backgroundColor = "white";
+    addNewRow.appendChild(addNewCol);
+  }
+  flexbox_container.appendChild(addNewRow);
+  
+  //Update arrays
+  allColsArr = Array.from(document.querySelectorAll(".col"));
+  allRowsArr = Array.from(document.querySelectorAll(".row"));
+};
 
 //Closes issue #2
 removeRowButton.onclick = function () {
   flexbox_container.removeChild(allRowsArr.pop());
+  
+  //Update arrays
+  allColsArr = Array.from(document.querySelectorAll(".col"));
+  allRowsArr = Array.from(document.querySelectorAll(".row"));
 };
 
 //Closes issue #3
@@ -30,6 +54,26 @@ removeColButton.onclick = function () {
   allRowsArr.map((element) => {
     element.lastElementChild.remove();
   });
+
+  //Update arrays
+  allColsArr = Array.from(document.querySelectorAll(".col"));
+  allRowsArr = Array.from(document.querySelectorAll(".row"));
+};
+
+//Closes issue #5
+addColButton.onclick = function () {
+  allRowsArr.map((element) => {
+    let addNewCol = document.createElement("div");
+    addNewCol.classList =
+      "col box d-flex justify-content-center align-items-center";
+    addNewCol.innerHTML = "Column";
+    addNewCol.style.backgroundColor = "white";
+    element.appendChild(addNewCol);
+  });
+  
+  //Update arrays
+  allColsArr = Array.from(document.querySelectorAll(".col"));
+  allRowsArr = Array.from(document.querySelectorAll(".row"));
 };
 
 //------------------- Form Colors + Submit Buttons ------------------------------------
@@ -43,7 +87,11 @@ const third_form_submit = document.querySelector(".third-form-submit");
 const fourth_form_submit = document.querySelector(".fourth-form-submit");
 
 //Closes issue #6
-allColsArr.map((element) => {
+allColsArr.forEach((element) => {
+  element.onclick = function () {
+    console.log("I was clicked");
+  };
+  //console.log(allColsArr);
   element.addEventListener("click", function () {
     element.style.backgroundColor = first_form_color.value;
   });
@@ -64,3 +112,21 @@ third_form_submit.onclick = function () {
     element.style.backgroundColor = third_form_color.value;
   });
 };
+
+//Closes issue #9
+// let fourth_form_isClicked = false;
+
+// fourth_form_submit.onclick = function () {
+//   fourth_form_isClicked = !fourth_form_isClicked;
+//   if (fourth_form_isClicked === true) {
+//     fourth_form_submit.value = "Click again to Stop!";
+//     allColsArr.forEach((element) => {
+//       element.addEventListener("click", function () {
+//         element.style.backgroundColor = fourth_form_color.value;
+//         console.log(element);
+//       });
+//     });
+//   } else if (fourth_form_isClicked === false) {
+//     fourth_form_submit.value = "Do it!";
+//   }
+// };
