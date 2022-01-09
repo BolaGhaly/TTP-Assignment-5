@@ -29,16 +29,23 @@ addRowButton.onclick = function () {
     addNewRow.appendChild(addNewCol);
   }
   flexbox_container.appendChild(addNewRow);
-  
+
   //Update arrays
   allColsArr = Array.from(document.querySelectorAll(".col"));
   allRowsArr = Array.from(document.querySelectorAll(".row"));
+
+  //Closes issue #6
+  allColsArr.forEach((element) => {
+    element.addEventListener("click", function () {
+      element.style.backgroundColor = first_form_color.value;
+    });
+  });
 };
 
 //Closes issue #2
 removeRowButton.onclick = function () {
   flexbox_container.removeChild(allRowsArr.pop());
-  
+
   //Update arrays
   allColsArr = Array.from(document.querySelectorAll(".col"));
   allRowsArr = Array.from(document.querySelectorAll(".row"));
@@ -70,10 +77,17 @@ addColButton.onclick = function () {
     addNewCol.style.backgroundColor = "white";
     element.appendChild(addNewCol);
   });
-  
+
   //Update arrays
   allColsArr = Array.from(document.querySelectorAll(".col"));
   allRowsArr = Array.from(document.querySelectorAll(".row"));
+
+  //Closes issue #6
+  allColsArr.forEach((element) => {
+    element.addEventListener("click", function () {
+      element.style.backgroundColor = first_form_color.value;
+    });
+  });
 };
 
 //------------------- Form Colors + Submit Buttons ------------------------------------
@@ -88,10 +102,6 @@ const fourth_form_submit = document.querySelector(".fourth-form-submit");
 
 //Closes issue #6
 allColsArr.forEach((element) => {
-  element.onclick = function () {
-    console.log("I was clicked");
-  };
-  //console.log(allColsArr);
   element.addEventListener("click", function () {
     element.style.backgroundColor = first_form_color.value;
   });
@@ -114,19 +124,36 @@ third_form_submit.onclick = function () {
 };
 
 //Closes issue #9
-// let fourth_form_isClicked = false;
+let fourth_form_isClicked = false;
 
-// fourth_form_submit.onclick = function () {
-//   fourth_form_isClicked = !fourth_form_isClicked;
-//   if (fourth_form_isClicked === true) {
-//     fourth_form_submit.value = "Click again to Stop!";
-//     allColsArr.forEach((element) => {
-//       element.addEventListener("click", function () {
-//         element.style.backgroundColor = fourth_form_color.value;
-//         console.log(element);
-//       });
-//     });
-//   } else if (fourth_form_isClicked === false) {
-//     fourth_form_submit.value = "Do it!";
-//   }
-// };
+fourth_form_submit.onclick = function () {
+  fourth_form_isClicked = !fourth_form_isClicked;
+  console.log(fourth_form_isClicked);
+
+  if (fourth_form_isClicked === true) {
+    let isMouseDown;
+    fourth_form_submit.value = "Click again to Stop!";
+    allColsArr.forEach((element) => {
+      element.addEventListener("mousedown", function () {
+        isMouseDown = true;
+        element.style.backgroundColor = fourth_form_color.value;
+      });
+      element.addEventListener("mouseover", function () {
+        if (isMouseDown == true) {
+          element.style.backgroundColor = fourth_form_color.value;
+        }
+      });
+      element.addEventListener("mouseup", function () {
+        isMouseDown = false;
+        element.style.backgroundColor = fourth_form_color.value;
+      });
+    });
+  } else if (fourth_form_isClicked === false) {
+    fourth_form_submit.value = "Do it!";
+    allColsArr.forEach((element) => {
+      element.addEventListener("click", function () {
+        element.style.backgroundColor = element.style.backgroundColor;
+      });
+    });
+  }
+};
